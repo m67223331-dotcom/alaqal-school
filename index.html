@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>مدرسة العقال البحري الثانوية المشتركة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== القائمة (ثلاث شرط) ========== -->
+  <button class="burger" id="menuBtn" aria-label="القائمة" aria-expanded="false" aria-controls="menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="menu" id="menu" hidden>
+    <a href="#home" data-t="nHome"></a>
+    <a href="#schedule" data-t="nSch"></a>
+    <a href="#top" data-t="nTop"></a>
+    <a href="#teachers" data-t="nTea"></a>
+    <a href="#gallery" data-t="nGal"></a>
+    <a href="#contact" data-t="nCon"></a>
+    <div class="ctl">
+      <button class="ghost" id="langBtn">EN</button>
+      <button class="ghost" id="themeBtn">🌙</button>
+      <button id="admBtn" data-t="login"></button>
+    </div>
+  </nav>
+
+  <!-- ========== الواجهة ========== -->
+  <header class="hero" id="home">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <div>
+      <h1 data-t="school"></h1>
+      <p data-t="welcome"></p>
+    </div>
+  </header>
+
+  <!-- ========== جدول الحصص ========== -->
+  <section id="schedule">
+    <h2 data-t="nSch"></h2>
+    <button type="button" class="sch-open" id="schOpen">
+      <span class="ico">🗓️</span>
+      <span><b data-t="schTap"></b><small data-t="schSub"></small></span>
+    </button>
+  </section>
+
+  <!-- ========== الأوائل (2026 فقط) ========== -->
+  <section id="top">
+    <h2 data-t="nTop"></h2>
+    <div class="bar">
+      <div class="elec" id="topTabs"></div>
+      <button class="adm" id="addTop" data-t="addTop"></button>
+    </div>
+    <div id="tops"></div>
+  </section>
+
+  <!-- ========== المدرسون ========== -->
+  <section id="teachers">
+    <h2 data-t="nTea"></h2>
+
+    <!-- الوزير ثم المديرة (شكل هرمي) -->
+    <div class="leaders">
+      <div class="leader minister">
+        <div class="ring"><img src="Images/imagesminister.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></div>
+        <span class="role" data-t="mTitle"></span>
+        <b>محمد عبداللطيف</b>
+      </div>
+      <span class="link"></span>
+      <div class="leader principal">
+        <div class="ring"><img src="Images/imagesprincipal.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></div>
+        <span class="role" data-t="pTitle"></span>
+        <b>ليلى البدري</b>
+      </div>
+      <span class="link"></span>
+    </div>
+
+    <!-- كروت المدرسين (عدّل الاسم والمادة والنبذة هنا، والصورة من images/teachers) -->
+    <div class="grid" id="staff">
+      <div class="card">
+        <img src="images/Bakr.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>أبو بكر حسين</b>
+        <small>وكيل المدرسة</small>
+        <p>
+وراء كل مدرسة ناجحة قيادة حكيمة، والأستاذ أبو بكر حسين نموذج للعطاء والانضباط والإخلاص في العمل</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Jamal.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>جمال محروص</b>
+        <small>لغة عربية</small>
+        <p>الأستاذ جمال محروص، في رحاب لغة الضاد، حيث تلتقي فصاحة البيان بجمال الأدب وعظمة التراث
+</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Hamada.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>حمادة...</b>
+        <small>رياضيات</small>
+        <p>الأستاذ حمادة، حيث يلتقي التفكير بالإبداع، وتصبح كل مسألة فرصة لاكتشاف حل جديد</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Atef.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>عاطف محمود</b>
+        <small>تربية رياضية</small>
+        <p>الأستاذ عاطف إسماعيل، يؤمن بأن الرياضة ليست مجرد منافسة، بل مدرسة تصنع الإرادة وتغرس روح الفريق</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Saif.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>سيف...</b>
+        <small>تربية موسيقية</small>
+        <p>مع الأستاذ سيف، تتحول النغمات إلى لغة للمشاعر، وتصبح الموسيقى فناً يرتقي بالروح والوجدان</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Mohammed1.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>محمد حسيم</b>
+        <small>برمجة و تكنولوجيا المعلومات</small>
+        <p>في عالم التكنولوجيا والذكاء الاصطناعي، يقودنا الأستاذ محمد حسن نحو المستقبل، حيث تتحول الأكواد إلى إبداع، والأفكار إلى إنجازات، والبرمجة إلى لغة تصنع الغد 🔥</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Bassem.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>باسم...</b>
+        <small>تريخ وطني</small>
+        <p>مع الأستاذ باسم، نفتح صفحات الماضي، لنفهم الحاضر ونستلهم من التاريخ طريق المستقبل</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Bakheet.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>بخيت...</b>
+        <small>كيمياء</small>
+        <p>مع الأستاذ بخيت، لا تبقى الكيمياء مجرد معادلات، بل تصبح رحلة ممتعة لاكتشاف أسرار المادة والحياة</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Mohammed2.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>محمد إبراهيم</b>
+        <small>لغة فرنسية</small>
+        <p>مع الأستاذ محمد، تصبح اللغة الفرنسية نافذة نطل منها على ثقافات جديدة، ونكتشف بها عالماً من المعرفة</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Hammam.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>همام...</b>
+        <small>لغة فرنسية</small>
+        <p>الأستاذ همام، يفتح أمام طلابه أبواب اللغة الفرنسية، لتصبح الكلمات جسوراً بين الثقافات والحضارات</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Murad.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>مراد...</b>
+        <small>رياضيات</small>
+        <p>الأستاذ مراد، حيث تتحول الأرقام إلى أفكار، والمعادلات إلى مفاتيح تفتح أبواب النجاح</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Maize.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>مايز...</b>
+        <small>لغة إنجليزية</small>
+        <p>كل لغة جديدة هي باب لعالم جديد، ومع الأستاذ مايز، تصبح الإنجليزية وسيلة للمعرفة، وجسرًا نحو النجاح والتميز</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Naji.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>ناجي...</b>
+        <small>رياضيات</small>
+        <p>الرياضيات مش مجرد أرقام وقوانين، دي فن التفكير والمنطق، ومع الأستاذ ناجي، لكل مسألة فكرة، ولكل تحدٍّ حل</p>
+      </div>
+
+      <div class="card">
+        <img src="images/Allam.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null">
+        <b>علام...</b>
+        <small>اخصائي مكتبة</small>
+        <p>المكتبة مش مجرد رفوف وكتب، دي عالم من المعرفة والخيال، ومع الأستاذ علام، تبدأ رحلة القراءة وتنمو العقول</p>
+      </div>
+
+    </div>
+
+    <button class="adm" id="addTea" data-t="addTea"></button>
+    <div class="grid" id="teas"></div>
+  </section>
+
+  <!-- ========== معرض الصور ========== -->
+  <section id="gallery">
+    <h2 data-t="nGal"></h2>
+    <!-- صور المدرسة ومبانيها (9 صور): images/school/1.jpg ... 9.jpg -->
+    <div class="mosaic">
+    <figure class="m1"><img src="images/IMG-20261023-WA0060.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m2"><img src="images/IMG-20261023-WA0072.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m3"><img src="images/IMG-20261023-WA0075.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m4"><img src="images/IMG-20261023-WA0063.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m5"><img src="images/IMG-20261023-WA0076.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m6"><img src="images/IMG-20261023-WA0077.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m7"><img src="images/IMG-20261023-WA0078.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m8"><img src="images/IMG-20261023-WA0079.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    <figure class="m9"><img src="images/IMG-20261023-WA0080.jpg" alt="" onerror="this.removeAttribute('src');this.onerror=null"></figure>
+    </div>
+
+    <button class="adm" id="addPic" data-t="addPic"></button>
+    <input type="file" id="picFile" accept="image/*" hidden>
+    <div class="gal" id="pics"></div>
+  </section>
+
+  <!-- ========== كارت الشعار ========== -->
+  <section id="slogan">
+    <div class="card slogan">
+      <p>ابدأ رحلتك نحو التفوق 🚀</p>
+      <p>تعلم، تطور، انجح 🏆</p>
+      <p>المعرفة تبدأ من هنا 📚</p>
+    </div>
+  </section>
+
+  <!-- ========== تواصل معنا (الرقمين فقط) ========== -->
+  <section id="contact">
+    <div class="card wa">
+      <div class="logo">𓆩𝑴𝒁 𝑳𝒂𝒃𝒔𓆪 ⚡</div>
+      <a href="https://wa.me/201033537704" target="_blank" rel="noopener" dir="ltr">💬 𝒁𝒆𝒓𝒐𝑻𝒓𝒂𝒄𝒌: +201033537704</a>
+      <a href="https://wa.me/201080650760" target="_blank" rel="noopener" dir="ltr">💬 Eng. M. Mahmoud : +201080650760</a>
+    </div>
+  </section>
+
+  <footer data-t="school"></footer>
+
+  <!-- ========== نافذة الجدول: اختيار الفصل ثم الجدول ========== -->
+  <dialog id="schDlg">
+    <div class="sheet">
+      <div class="sheet-head">
+        <button type="button" class="ghost" id="schBack" data-t="back" hidden></button>
+        <b id="schTitle"></b>
+        <button type="button" class="ghost" id="schClose" aria-label="إغلاق">✕</button>
+      </div>
+      <div id="schPick"><div id="schChips"></div></div>
+      <div id="schView" hidden>
+        <div class="tbl"><table id="schTbl"></table></div>
+        <small class="adm" data-t="tapEdit"></small>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ========== عرض الصورة مكبرة ========== -->
+  <dialog id="lightbox"><img alt=""></dialog>
+
+  <!-- ========== نموذج إضافة مدرس ========== -->
+  <dialog id="teaDlg">
+    <form method="dialog" id="teaForm">
+      <h3 data-t="addTea"></h3>
+      <label for="tN" data-t="tName"></label><input id="tN" required>
+      <label for="tS" data-t="tSub"></label><input id="tS" required>
+      <label for="tP" data-t="tPhoto"></label><input id="tP" type="file" accept="image/*">
+      <label for="tI" data-t="tInfo"></label><textarea id="tI" rows="3"></textarea>
+      <div class="bar">
+        <button type="submit" data-t="save"></button>
+        <button type="button" class="ghost" id="teaCancel" data-t="cancel"></button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

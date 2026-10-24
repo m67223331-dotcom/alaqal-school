@@ -1,0 +1,422 @@
+/* =====================================================
+   1) المتغيرات (الألوان - الوضع الفاتح والليلي)
+   ===================================================== */
+:root {
+  --bg:   #f3f1ff;
+  --card: rgba(255, 255, 255, .78);
+  --tx:   #1b1740;
+  --mut:  #645f8a;
+  --ln:   rgba(106, 76, 255, .2);
+  --p1:   #6a4cff;
+  --p2:   #0ea5c9;
+  --acc:  #ffb84d;
+  --grad: linear-gradient(135deg, #6a4cff, #0ea5c9);
+  --sh:   0 12px 32px rgba(70, 50, 190, .14);
+}
+[data-theme=dark] {
+  --bg:   #0a0e1f;
+  --card: rgba(255, 255, 255, .07);
+  --tx:   #eef0ff;
+  --mut:  #a1a9cc;
+  --ln:   rgba(255, 255, 255, .14);
+  --sh:   0 12px 32px rgba(0, 0, 0, .45);
+}
+
+/* =====================================================
+   2) الأساسيات
+   ===================================================== */
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+body {
+  font-family: 'Cairo', Tahoma, sans-serif;
+  color: var(--tx);
+  line-height: 1.75;
+  background:
+    radial-gradient(circle at 15% 0, rgba(106, 76, 255, .18), transparent 40%),
+    radial-gradient(circle at 90% 60%, rgba(14, 165, 201, .16), transparent 40%),
+    var(--bg);
+  background-attachment: fixed;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
+
+/* =====================================================
+   3) الأزرار وحقول الإدخال
+   ===================================================== */
+button, input, select, textarea { font: inherit; color: inherit; }
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  padding: .5rem 1.1rem;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(106, 76, 255, .3);
+  transition: transform .15s, filter .15s;
+}
+button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+button.ghost { background: transparent; border: 1px solid var(--ln); color: inherit; box-shadow: none; }
+.x { background: #e5484d; color: #fff; padding: .15rem .7rem; margin-top: .4rem; box-shadow: none; }
+
+select, input, textarea {
+  padding: .55rem .9rem;
+  border: 1px solid var(--ln);
+  border-radius: 14px;
+  background: var(--card);
+}
+select option { color: #1b1740; }
+
+/* =====================================================
+   4) التخطيط العام (الأقسام - العناوين - الشبكات)
+   ===================================================== */
+section { max-width: 1040px; margin: 0 auto; padding: 2.6rem 1rem; }
+h2 { display: inline-block; margin-bottom: 1.2rem; font-size: 1.8rem; font-weight: 900; }
+h2::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 5px;
+  margin-top: .2rem;
+  border-radius: 9px;
+  background: var(--grad);
+}
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+.adm { display: none; }
+body.isadm .adm { display: inline-block; }
+
+/* =====================================================
+   5) القائمة (زر ثلاث شرط)
+   ===================================================== */
+.burger {
+  position: fixed;
+  top: .9rem;
+  inset-inline-start: .9rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--ln);
+  border-radius: 14px;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--sh);
+}
+.burger span {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--tx);
+  transition: transform .3s cubic-bezier(.2, .9, .3, 1.2), opacity .2s;
+}
+.burger.open { background: var(--grad); border-color: transparent; }
+.burger.open span { background: #fff; }
+.burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+.menu {
+  position: fixed;
+  top: 4.2rem;
+  inset-inline-start: .9rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  min-width: 210px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: .7rem;
+  border: 1px solid var(--ln);
+  border-radius: 20px;
+  background: var(--bg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+}
+.menu[hidden] { display: none; }
+.menu:not([hidden]) { transform-origin: top; animation: menuIn .3s cubic-bezier(.2, .9, .3, 1.2) both; }
+.menu:not([hidden]) a { animation: itemIn .35s ease both; animation-delay: calc(var(--i, 0) * .05s + .05s); }
+.menu a { padding: .5rem .9rem; border-radius: 12px; font-weight: 700; text-decoration: none; }
+.menu a:hover { background: var(--grad); color: #fff; }
+.menu .ctl { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; padding-top: .6rem; border-top: 1px solid var(--ln); }
+
+/* =====================================================
+   6) الواجهة (Hero)
+   ===================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 78vh;
+  padding: 3rem 1.2rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0 48px 48px;
+  background:
+    linear-gradient(160deg, rgba(36, 26, 102, .78), rgba(8, 60, 92, .7)),
+    url(images/school.jpg) center / cover #241a66;
+}
+.hero > div { position: relative; z-index: 1; }
+.hero h1 {
+  max-width: 18ch;
+  margin: 0 auto;
+  font-size: clamp(2rem, 7vw, 4rem);
+  font-weight: 900;
+  line-height: 1.3;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, .4);
+}
+.hero p { margin-top: .8rem; font-size: 1.15rem; opacity: .92; }
+.blob { position: absolute; border-radius: 50%; filter: blur(50px); opacity: .55; }
+.b1 { width: 260px; height: 260px; top: -60px; inset-inline-start: -60px; background: #6a4cff; }
+.b2 { width: 300px; height: 300px; bottom: -90px; inset-inline-end: -70px; background: #0ea5c9; }
+
+/* =====================================================
+   7) الكروت العامة
+   ===================================================== */
+.card {
+  padding: 1rem;
+  border: 1px solid var(--ln);
+  border-radius: 22px;
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--sh);
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card img { width: 100%; aspect-ratio: 1; object-fit: cover; margin-bottom: .6rem; border-radius: 16px; background: var(--grad); }
+.card b { font-size: 1.05rem; }
+.card small { display: block; color: var(--mut); }
+
+/* =====================================================
+   8) المكتبة
+   ===================================================== */
+/* اختيار المسار والمادة الرابعة */
+.hint { margin: .6rem 0 .4rem; color: var(--mut); font-weight: 700; }
+.elec { display: flex; flex-wrap: wrap; gap: .5rem; }
+.pill { border: 1px solid var(--ln); background: var(--card); color: var(--tx); box-shadow: none; }
+.pill.on { border-color: transparent; background: var(--grad); color: #fff; }
+.x.lnk { background: var(--p1); }
+
+/* =====================================================
+   9) جدول الحصص
+   ===================================================== */
+.tbl { overflow-x: auto; border: 1px solid var(--ln); border-radius: 20px; box-shadow: var(--sh); }
+table { width: 100%; border-collapse: collapse; background: var(--card); }
+th, td { min-width: 88px; padding: .65rem .5rem; text-align: center; border-bottom: 1px solid var(--ln); }
+th { background: var(--grad); color: #fff; }
+tr:nth-child(even) td { background: rgba(106, 76, 255, .06); }
+td.ed { cursor: pointer; }
+td.ed:hover { background: rgba(255, 184, 77, .3) !important; }
+
+/* زر فتح الجدول */
+.sch-open {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.4rem 1.5rem;
+  text-align: start;
+  border-radius: 26px;
+  background: var(--grad);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(106, 76, 255, .35);
+}
+.sch-open .ico { font-size: 2.4rem; }
+.sch-open b { display: block; font-size: 1.3rem; }
+.sch-open small { display: block; opacity: .9; font-weight: 400; }
+
+/* نافذة الجدول (اختيار الفصل ثم عرض الجدول) */
+#schDlg { width: min(96vw, 760px); max-height: 90vh; padding: 0; overflow: hidden; }
+#schDlg[open] { animation: sheetIn .3s cubic-bezier(.2, .9, .3, 1.1); }
+.sheet { display: flex; flex-direction: column; max-height: 90vh; }
+.sheet-head { display: flex; align-items: center; gap: .6rem; padding: 1rem 1.2rem; background: var(--grad); color: #fff; }
+.sheet-head b { flex: 1; font-size: 1.15rem; }
+.sheet-head .ghost { padding: .3rem .8rem; border-color: rgba(255, 255, 255, .55); color: #fff; }
+#schPick, #schView { padding: 1rem 1.2rem 1.4rem; overflow: auto; }
+.chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(68px, 1fr)); gap: .5rem; margin-bottom: .8rem; }
+.chip { padding: .7rem 0; border: 1px solid var(--ln); border-radius: 16px; background: var(--card); color: var(--tx); font-size: 1.05rem; box-shadow: none; }
+.chip:hover, .chip.on { border-color: transparent; background: var(--grad); color: #fff; }
+
+/* =====================================================
+   10) الأوائل والمدرسون
+   ===================================================== */
+#staff, #teas { margin-top: 1rem; }
+
+/* الوزير والمديرة (شكل هرمي) */
+.leaders { display: flex; flex-direction: column; align-items: center; margin-bottom: .5rem; }
+.leader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 300px);
+  padding: 1.3rem 1.5rem;
+  text-align: center;
+  border: 1px solid var(--ln);
+  border-radius: 30px;
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--sh);
+}
+.leader .ring { width: 120px; height: 120px; padding: 5px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 0 7px rgba(106, 76, 255, .16); }
+.leader .ring img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: #241a66; }
+.leader .role { margin-top: .8rem; padding: .1rem .9rem; border-radius: 999px; background: var(--acc); color: #2a1a00; font-size: .9rem; font-weight: 800; }
+.leader b { margin-top: .3rem; font-size: 1.25rem; }
+.leader.minister { width: min(100%, 360px); }
+.leader.minister .ring { width: 160px; height: 160px; }
+.leader.minister b { font-size: 1.5rem; }
+.leaders .link { width: 3px; height: 28px; border-radius: 3px; background: var(--grad); }
+
+/* منصة الأوائل: الثلاثة الأوائل */
+.podium { display: grid; grid-template-columns: 1fr 1.15fr 1fr; align-items: end; gap: .6rem; margin: 1rem 0; }
+.pod { padding: 1rem .5rem; text-align: center; color: #fff; border-radius: 22px; box-shadow: var(--sh); }
+.pod .med { font-size: 2rem; }
+.pod b { display: block; font-size: .95rem; line-height: 1.5; }
+.pod .sc { display: inline-block; margin-top: .5rem; padding: .1rem .8rem; border-radius: 999px; background: rgba(0, 0, 0, .28); font-weight: 900; }
+.p1 { min-height: 240px; color: #2a1a00; background: linear-gradient(160deg, #ffd95a, #e59500); }
+.p2 { min-height: 205px; color: #10182b; background: linear-gradient(160deg, #dde3f0, #8e9ab3); }
+.p3 { min-height: 180px; background: linear-gradient(160deg, #d8935a, #96511f); }
+
+/* باقي الأوائل: قائمة مرتبة */
+.ranks { display: grid; gap: .6rem; }
+.rank { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; padding: .7rem .9rem; border-radius: 18px; }
+.rank i {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-style: normal;
+  font-weight: 900;
+}
+.rank b { flex: 1; min-width: 140px; }
+.rank .sc { padding: .1rem .8rem; border-radius: 999px; background: var(--grad); color: #fff; font-weight: 900; }
+
+/* =====================================================
+   12) معرض الصور
+   ===================================================== */
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .8rem; margin-top: 1rem; }
+.gal div { overflow: hidden; border-radius: 18px; }
+.gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--grad); transition: transform .35s; }
+.gal div:hover img { transform: scale(1.08); }
+
+/* صور المدرسة ومبانيها: 9 صور بأحجام مختلفة */
+.mosaic { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 150px; grid-auto-flow: dense; gap: .7rem; }
+.mosaic figure { position: relative; overflow: hidden; margin: 0; border-radius: 22px; background: var(--grad); box-shadow: var(--sh); }
+.mosaic img { display: block; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: transform .5s; }
+.mosaic figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 14, 31, .4), transparent 50%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.mosaic figure:hover::after { opacity: 1; }
+.mosaic figure:hover img { transform: scale(1.08); }
+.m1 { grid-column: span 2; grid-row: span 2; }
+.m3 { grid-row: span 2; }
+.m5, .m8, .m9 { grid-column: span 2; }
+@media (max-width: 640px) {
+  .mosaic { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 120px; }
+}
+
+/* =====================================================
+   13) كارت الشعار - التواصل - الواتساب
+   ===================================================== */
+.slogan {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  background: linear-gradient(120deg, #4b2fd6, #1d4ed8, #0e7490, #4b2fd6);
+  background-size: 300% 300%;
+  animation: flow 10s ease infinite;
+}
+.slogan p { font-size: clamp(1.2rem, 4.5vw, 1.9rem); font-weight: 900; }
+.slogan p + p { color: var(--acc); }
+.slogan p + p + p { color: #fff; opacity: .9; }
+
+
+.wa { display: grid; gap: .7rem; max-width: 480px; margin: 0 auto; padding: 1.4rem; text-align: center; }
+.wa .logo {
+  font-size: 2rem;
+  font-weight: 900;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.wa a {
+  display: block;
+  padding: .8rem 1rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #052b12;
+  font-weight: 800;
+  text-decoration: none;
+  word-break: break-word;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, .35);
+  transition: transform .15s;
+}
+.wa a:hover { transform: translateY(-2px); }
+
+/* =====================================================
+   14) نموذج المدرس والتذييل
+   ===================================================== */
+dialog {
+  width: min(92vw, 430px);
+  padding: 1.4rem;
+  border: 0;
+  border-radius: 24px;
+  background: var(--bg);
+  color: var(--tx);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+}
+dialog::backdrop { background: rgba(5, 5, 25, .6); backdrop-filter: blur(4px); }
+dialog label { display: block; margin: .6rem 0 .2rem; font-weight: 700; }
+dialog input, dialog textarea { width: 100%; }
+dialog .bar { margin-top: 1rem; }
+
+/* عرض الصورة مكبرة */
+#lightbox { width: auto; max-width: 94vw; padding: 0; background: transparent; box-shadow: none; }
+#lightbox img { display: block; max-width: 94vw; max-height: 88vh; border-radius: 18px; cursor: zoom-out; }
+
+footer {
+  margin-top: 2rem;
+  padding: 1.8rem 1rem;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 40px 40px 0 0;
+  background: linear-gradient(90deg, #241a66, #0b3d5c);
+}
+
+/* =====================================================
+   15) الحركة
+   ===================================================== */
+@keyframes sheetIn { from { opacity: 0; transform: translateY(24px) scale(.97); } }
+@keyframes menuIn { from { opacity: 0; transform: scale(.85) translateY(-12px); } }
+@keyframes itemIn { from { opacity: 0; transform: translateY(8px); } }
+@keyframes flow { 50% { background-position: 100% 50%; } }
+@keyframes float { 50% { transform: translateY(24px); } }
+@media (prefers-reduced-motion: no-preference) {
+  .blob { animation: float 7s ease-in-out infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slogan, .menu, .menu a, #schDlg { animation: none !important; }
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
