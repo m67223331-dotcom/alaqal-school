@@ -18,35 +18,35 @@ const CLOUD = !!(CONFIG.apiKey && CONFIG.databaseURL);
 const T = {
   ar: {
     school: 'مدرسة العقال البحري الثانوية المشتركة', welcome: 'أهلاً بكم في موقع المدرسة', mTitle: 'وزير التربية والتعليم',
-    nHome: 'الرئيسية', nLib: 'المواد الدراسية', nSch: 'جدول الحصص', nTop: 'أوائل 2026', nTea: 'المدرسون', nMin: 'كلمة الوزير', nGal: 'نبذة عن المدرسة', nCon: 'تواصل معنا',
+    nHome: 'الرئيسية', nSch: 'جدول الحصص', nTop: 'أوائل 2026', nTea: 'المدرسون', nMin: 'كلمة الوزير', nGal: 'نبذة عن المدرسة', nCon: 'تواصل معنا',
     login: 'دخول الإدارة', logout: 'خروج', edit: 'تعديل', save: 'حفظ', cancel: 'إلغاء', del: 'حذف',
-    addBook: 'إضافة كتاب', addTop: 'إضافة متفوق', addTea: 'إضافة مدرس', addPic: 'إضافة صورة', tapEdit: 'اضغط على أي خانة لتعديلها',
+    addTop: 'إضافة متفوق', addTea: 'إضافة مدرس', addPic: 'إضافة صورة', tapEdit: 'اضغط على أي خانة لتعديلها',
     schTap: 'اضغط لاختيار فصلك', schSub: 'اختار فصلك وشوف جدول الحصص', schPick: 'اختار فصلك', back: 'رجوع',
     tName: 'اسم المدرس', tSub: 'المادة', tPhoto: 'صورة المدرس', tInfo: 'معلومات عن المدرس',
-    open: 'فتح الكتاب', empty: 'لا يوجد محتوى بعد.', per: 'الحصة', day: 'اليوم',
+    empty: 'لا يوجد محتوى بعد.', per: 'الحصة', day: 'اليوم',
     days: ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس'],
     grades: ['أولى ثانوي بكالوريا', 'تانية ثانوي بكالوريا'],
     tg: ['أولى ثانوي', 'تانية ثانوي', 'تالتة ثانوي'],
     pw: 'اكتب كلمة السر', bad: 'كلمة السر غير صحيحة', saveErr: 'تعذر الحفظ، سجّل دخول الإدارة من جديد.', full: 'المساحة ممتلئة، استخدم صوراً أصغر.',
-    bookT: 'اسم الكتاب', bookU: 'رابط الكتاب (PDF) أو اتركه فارغاً', topN: 'اسم الطالب', topS: 'المجموع / النسبة',
+    topN: 'اسم الطالب', topS: 'المجموع / النسبة',
     mBio: 'اكتب كلمة الوزير', mNm: 'اسم الوزير', addr: 'العنوان', phone: 'الهاتف', mail: 'البريد الإلكتروني',
-    total: 'المجموع', pct: 'النسبة', pTitle: 'مديرة المدرسة', pickTrack: 'اختار المسار', pickElec: 'اختار المادة الرابعة', pickFirst: 'اختار المسار الأول عشان تظهر لك المواد.', link: 'الرابط'
+    total: 'المجموع', pct: 'النسبة', pTitle: 'مديرة المدرسة'
   },
   en: {
     school: 'Al-Eqal Al-Bahari Mixed Secondary School', welcome: 'Welcome to our school website', mTitle: 'Minister of Education',
-    nHome: 'Home', nLib: 'Subjects', nSch: 'Timetable', nTop: 'Top Students 2026', nTea: 'Teachers', nMin: "Minister's Word", nGal: 'About the School', nCon: 'Contact',
+    nHome: 'Home', nSch: 'Timetable', nTop: 'Top Students 2026', nTea: 'Teachers', nMin: "Minister's Word", nGal: 'About the School', nCon: 'Contact',
     login: 'Admin login', logout: 'Logout', edit: 'Edit', save: 'Save', cancel: 'Cancel', del: 'Delete',
-    addBook: 'Add book', addTop: 'Add top student', addTea: 'Add teacher', addPic: 'Add photo', tapEdit: 'Tap any cell to edit it',
+    addTop: 'Add top student', addTea: 'Add teacher', addPic: 'Add photo', tapEdit: 'Tap any cell to edit it',
     schTap: 'Tap to choose your class', schSub: 'Pick your class to see its timetable', schPick: 'Choose your class', back: 'Back',
     tName: 'Teacher name', tSub: 'Subject', tPhoto: 'Teacher photo', tInfo: 'About the teacher',
-    open: 'Open book', empty: 'Nothing here yet.', per: 'Period', day: 'Day',
+    empty: 'Nothing here yet.', per: 'Period', day: 'Day',
     days: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'],
     grades: ['First Year (Baccalaureate)', 'Second Year (Baccalaureate)'],
     tg: ['First Year', 'Second Year', 'Third Year'],
     pw: 'Enter password', bad: 'Wrong password', saveErr: 'Could not save. Please log in again.', full: 'Storage is full, use smaller images.',
-    bookT: 'Book title', bookU: 'Book link (PDF) or leave empty', topN: 'Student name', topS: 'Total / percentage',
+    topN: 'Student name', topS: 'Total / percentage',
     mBio: "Write the minister's word", mNm: 'Minister name', addr: 'Address', phone: 'Phone', mail: 'Email',
-    total: 'Total', pct: 'Percentage', pTitle: 'School Principal', pickTrack: 'Choose your track', pickElec: 'Choose your 4th subject', pickFirst: 'Choose a track first to see its subjects.', link: 'Link'
+    total: 'Total', pct: 'Percentage', pTitle: 'School Principal'
   }
 };
 
@@ -55,25 +55,17 @@ const T = {
    ===================================================== */
 const SUBJ = ['لغة عربية', 'لغة أجنبية أولى', 'لغة أجنبية ثانية', 'علوم متكاملة', 'تاريخ', 'رياضة', 'برمجة', 'فلسفة'];
 const COUNT = [11, 5];                          // عدد فصول: أولى - تانية
+const PERIODS = 8;                              // عدد الحصص في اليوم (غيّر الرقم ده بس لو عايز عدد تاني)
 const classes = [];                             // مفاتيح زي 0-1 و0-2 (بدون / عشان Firebase)
 COUNT.forEach((n, g) => { for (let s = 1; s <= n; s++) classes.push(`${g}-${s}`); });
 const clsName = c => { const [g, s] = c.split('-'); return `${+g + 1}/${s}`; };
 
-// مسارات تانية بكالوريا: 3 مواد أساسية + مادة رابعة حسب المسار
-const CORE = ['لغة عربية', 'لغة أجنبية أولى', 'تاريخ'];
-const TRACKS = [
-  { id: 'med', ico: '🧬', n: 'طب وعلوم الحياة', en: 'Medicine & Life Sciences', opts: ['رياضيات', 'فيزياء'] },
-  { id: 'eng', ico: '💻', n: 'الهندسة وعلوم الحاسب', en: 'Engineering & Computer Science', opts: ['برمجة', 'كيمياء'] },
-  { id: 'biz', ico: '📊', n: 'الأعمال', en: 'Business', opts: ['محاسبة', 'إدارة أعمال'] },
-  { id: 'art', ico: '🎨', n: 'الآداب والفنون', en: 'Arts & Humanities', opts: ['لغة أجنبية ثانية', 'علم نفس'] }
-];
-const SEED1 = [...CORE, ...TRACKS.flatMap(x => x.opts)].map(t => ({ g: 1, t, u: '' }));
 
 const clone = o => JSON.parse(JSON.stringify(o));
 const toArr = v => Array.isArray(v) ? v : Object.values(v || {});
 function defSch() {
   const o = {};
-  classes.forEach((c, i) => { o[c] = Array.from({ length: 6 }, (_, d) => Array.from({ length: 7 }, (_, p) => SUBJ[(d + p + i) % SUBJ.length])); });
+  classes.forEach((c, i) => { o[c] = Array.from({ length: 6 }, (_, d) => Array.from({ length: PERIODS }, (_, p) => SUBJ[(d + p + i) % SUBJ.length])); });
   return o;
 }
 const TOPS = [   // الأوائل: [الاسم، المجموع أو النسبة]
@@ -94,21 +86,19 @@ const TOPS = [   // الأوائل: [الاسم، المجموع أو النسب
     ['إسراء عاطف أحمد منصور', '91.41%']]]
 ].flatMap(([g, rows]) => rows.map(([n, s]) => ({ n, s, g })));
 const DEF = {
-  books: [...SUBJ.map(t => ({ g: 0, t, u: '' })), ...SEED1],
   sch: defSch(), tops: [], teas: [], pics: []
 };
 // يكمّل أي حاجة ناقصة (Firebase بيحذف القوائم الفاضية)
 function normalize(d) {
   const o = Object.assign(clone(DEF), d || {});
-  ['books', 'tops', 'teas', 'pics'].forEach(k => { o[k] = toArr(o[k]); });
-  SEED1.forEach(s => { if (!o.books.some(b => b.g === 1 && b.t === s.t)) o.books.push({ ...s }); });
+  ['tops', 'teas', 'pics'].forEach(k => { o[k] = toArr(o[k]); });
   if (o.seedV !== 2) {   // يضيف الأوائل الناقصين مرة واحدة بدون تكرار
     o.seedV = 2;
     TOPS.forEach(s => { if (!o.tops.some(x => x.n === s.n && (x.g ?? 0) === s.g)) o.tops.push({ ...s }); });
   }
   o.teas = o.teas.filter(m => !/^اسم المدرس \d+$/.test(m.n));   // يشيل الكروت المؤقتة القديمة
   const sch = Object.assign(defSch(), (d && d.sch) || {});
-  classes.forEach(c => { sch[c] = toArr(sch[c]).map(toArr); });
+  classes.forEach(c => { sch[c] = toArr(sch[c]).map(r => { r = toArr(r); while (r.length < PERIODS) r.push(''); return r.slice(0, PERIODS); }); });
   o.sch = sch;
   return o;
 }
@@ -122,8 +112,7 @@ let S = normalize(null);
 let lang = localStorage.lang || 'ar';
 let admin = sessionStorage.admin === '1';
 let token = sessionStorage.token || '';
-let grade = 0, cls = '';          // cls فاضي = لسه ما اختارش فصل
-let track = localStorage.track || '', elec = localStorage.elec || '';
+let cls = '';          // cls فاضي = لسه ما اختارش فصل
 let topG = 0;
 const t = k => T[lang][k];
 const gName = i => t('grades')[i];
@@ -207,6 +196,7 @@ function render() {
   $('#admBtn').textContent = admin ? t('logout') : t('login');
   document.body.classList.toggle('isadm', admin);
 
+
   // جدول الحصص: اختيار الفصل ثم عرض الجدول
   $('#schChips').innerHTML = COUNT.map((n, g) =>
     `<p class="hint">${e(gName(g))}</p><div class="chips">${Array.from({ length: n }, (_, k) => {
@@ -218,7 +208,7 @@ function render() {
   $('#schView').hidden = !cls;
   $('#schBack').hidden = !cls;
   if (cls) {
-    let h = `<tr><th>${t('day')}</th>${Array.from({ length: 7 }, (_, p) => `<th>${t('per')} ${p + 1}</th>`).join('')}</tr>`;
+    let h = `<tr><th>${t('day')}</th>${Array.from({ length: PERIODS }, (_, p) => `<th>${t('per')} ${p + 1}</th>`).join('')}</tr>`;
     S.sch[cls].forEach((r, d) => {
       h += `<tr><th>${t('days')[d]}</th>${r.map((c, p) => `<td class="${admin ? 'ed' : ''}" data-d="${d}" data-p="${p}">${e(c)}</td>`).join('')}</tr>`;
     });
